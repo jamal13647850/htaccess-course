@@ -1,0 +1,70 @@
+ErrorDocument 404 /htaccess/404.html
+
+
+<Files secret.html>
+    #Redirect 301 /htaccess/secret.html /
+    order allow,deny
+    allow from all
+    deny from 1.1.1.1
+</Files>
+
+
+#DirectoryIndex jamal.html jamal2.html
+#Options -Indexes
+
+
+#AddType application/octet-stteam .png
+#AddType application/x-httpd-php .ehsan
+
+
+#Redirect 301 /htaccess/secret.html /
+#Redirect 301 /htaccess/testaccess /
+
+
+#RedirectMatch (.*).png $1.jpg                      #01.png --> 01.jpg
+#RedirectMatch (.*).png $1pic.jpg                   #01.png --> 01pic.jpg
+
+
+#RewriteEngine on
+#RewriteRule (.*)-(.*) $1_$2                        #my-test-file.html -->read from my_test_file.html
+
+
+#https://httpd.apache.org/docs/2.4/rewrite/flags.html
+#RewriteEngine on
+#RewriteRule info.php - [CO=name:ehsan:.localhost]  #create a cookie
+#RewriteRule info.php - [F]                          #make info.php forbiden
+#RewriteRule "(.*)A(.*)" "$1B$2" [N]                 #read all A to B --> AtoAA.html --> read from BtoBB.html
+
+
+#RewriteCond Variables --> https://www.askapache.com/htaccess/mod_rewrite-variables-cheatsheet/#Variable_Values_Examples
+#read from different file acording to time
+#RewriteEngine on
+#RewriteCond %{TIME_HOUR} <12
+#RewriteCond %{TIME_HOUR} >12
+#RewriteRule (.*) morning.html
+#RewriteRule (.*) evening.html
+
+
+#https://www.widexl.com/tutorials/mod_rewrite.html#condpattern
+#redirect to home page if file or folder not exist
+#RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule (.*) / [R]
+
+#url friendly
+#RewriteEngine on
+#RewriteRule ^page-(.*)\.html$ page.php?id=$1
+
+#block user from some sites entered to my site for example google.com
+#RewriteEngine on
+#RewriteCond %{HTTP_REFERER} google\.com [NC]
+#RewriteRule .* - [F]
+
+
+#show default picture
+#RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule images/(.*).png /images/default.png
+
+
